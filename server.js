@@ -12,9 +12,13 @@ const password = process.env.MONGO_PASSWORD;
 const uri = `mongodb://${user}:${password}@example.com/testdb`;
 
 mongoose.connect(uri)
-    .then(() => {
-        console.log('Conectado a MongoDB Atlas');
-    })
+        try {
+    await algo();
+    console.log("Correcto");
+    } catch (err) {
+    console.error(err);
+    }
+
         try {
     const res = await algo();
     console.log(res);
