@@ -7,7 +7,11 @@ const port = 3000;
 app.use(express.json());
 
 // Conectar a MongoDB Atlas (sin opciones obsoletas)
-mongoose.connect('mongodb+srv://chio24:Rosy.2405@cluster0.lmifw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+const user = process.env.MONGO_USER;
+const password = process.env.MONGO_PASSWORD;
+const uri = `mongodb://${user}:${password}@example.com/testdb`;
+
+mongoose.connect(uri)
     .then(() => {
         console.log('Conectado a MongoDB Atlas');
     })
