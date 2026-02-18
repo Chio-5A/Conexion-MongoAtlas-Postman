@@ -15,9 +15,12 @@ mongoose.connect(uri)
     .then(() => {
         console.log('Conectado a MongoDB Atlas');
     })
-    .catch((err) => {
-        console.error('Error conectando a MongoDB Atlas:', err);
-    });
+        try {
+    const res = await algo();
+    console.log(res);
+    } catch (err) {
+    console.error(err);
+    }
 
 // Definir un modelo de ejemplo
 const Schema = mongoose.Schema;
